@@ -12,12 +12,6 @@ const FORM_DATA = {
     dropoff_date: 1
 }
 
-const SEARCH_RESULTS = [
-    ['#', 'Company', 'Model', 'License plate', 'Price', 'Price per day', 'Action'],
-    ['45', 'Adams-Barnett', 'Toyota RAV4', '228-JIB', '45$', '45$', 'Rent'],
-    ['56', 'Hubbard Ltd', 'Toyota RAV4', 'LJJ 758', '42$', '42$', 'Rent'],
-]
-
 describe('Lab tests', () => {
 
     beforeEach('Open page', () => {
@@ -32,6 +26,12 @@ describe('Lab tests', () => {
 
         const cities = ['Berlin', 'Cracow', 'Paris', 'Wroclaw']
 
+        const SEARCH_RESULTS = [
+            ['#', 'Company', 'Model', 'License plate', 'Price', 'Price per day', 'Action'],
+            ['45', 'Adams-Barnett', 'Toyota RAV4', '228-JIB', '45$', '45$', 'Rent'],
+            ['56', 'Hubbard Ltd', 'Toyota RAV4', 'LJJ 758', '42$', '42$', 'Rent'],
+        ]
+
         // Given
         cy.contains(FILL_FORM_WARNING)
         hp.elements.getSearchResults().should('not.exist')
@@ -40,11 +40,6 @@ describe('Lab tests', () => {
 
         // When
         hp.searchData(FORM_DATA)
-        // hp.selectCountry(FORM_DATA.country)
-        // hp.selectCity(FORM_DATA.city)
-        // hp.typeModel(FORM_DATA.model)
-        // cy.insertDate(hp.selectors.PICKUP_DATE, FORM_DATA.pickup_date)
-        // cy.insertDate(hp.selectors.DROPOFF_DATE, FORM_DATA.dropoff_date)
 
         // Then
         hp.elements.getSearchResults().should('exist')
